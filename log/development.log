@@ -974,3 +974,53 @@ Started GET "/assets/application.js" for 127.0.0.1 at 2013-12-18 16:08:14 -0200
 
 
 Started GET "/assets/application.css" for 127.0.0.1 at 2013-12-18 16:08:14 -0200
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-18 16:19:06 -0200
+Processing by RoomsController#index as HTML
+  [1m[36mSimulation Load (0.6ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "rooms"[0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms"
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rooms".* FROM "rooms"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rooms".* FROM "rooms"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1
+  [1m[36mDevice Load (0.6ms)[0m  [1mSELECT "devices".* FROM "devices" ORDER BY "devices".name ASC[0m
+  Rendered application/_add_device.html.erb (5.2ms)
+  [1m[35mDeviceRoom Load (0.2ms)[0m  SELECT "device_rooms".* FROM "device_rooms" WHERE "device_rooms"."room_id" = $1  [["room_id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."room_id" = $1[0m  [["room_id", 1]]
+  [1m[35mStuff Load (0.1ms)[0m  SELECT "stuffs".* FROM "stuffs" WHERE "stuffs"."room_id" = $1  [["room_id", 1]]
+  Rendered rooms/_room.html.erb (11.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  Rendered rooms/index.html.erb within layouts/application (65.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  Rendered application/_header.html.erb (0.9ms)
+Completed 200 OK in 75ms (Views: 70.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-12-18 16:19:06 -0200
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-12-18 16:19:06 -0200
+
+
+Started GET "/devices" for 127.0.0.1 at 2013-12-18 16:19:08 -0200
+Processing by DevicesController#index as HTML
+  [1m[35mDevice Load (0.5ms)[0m  SELECT "devices".* FROM "devices"
+  Rendered devices/index.html.erb within layouts/application (479.5ms)
+  [1m[36mSimulation Load (0.3ms)[0m  [1mSELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simulations".* FROM "simulations" ORDER BY "simulations"."id" DESC LIMIT 1
+  Rendered application/_header.html.erb (1.5ms)
+Completed 200 OK in 486ms (Views: 484.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-12-18 16:19:08 -0200
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-12-18 16:19:08 -0200

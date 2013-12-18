@@ -16,4 +16,7 @@ Then we need to create the tables and populate the database, with the commands:
 rake db:schema:load
 rake db:seed
 
+Now we can start the server by running:
+rails s
+
 
