@@ -1,0 +1,32 @@
+<div data-id="room_<%= room.id %>" class="<%= Simulation.started? ? 'col-md-12' : 'col-md-4 room' %>">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<% unless Simulation.started? %>
+				<button class='close' data-url="<%= room_path(room) %>" data-remote="true" data-method="delete" data-confirm="Are you sure?">&times;</button>
+			<% end %>
+
+			<h3><%= Simulation.started? ? room.name : (best_in_place room, :name, inner_class: "form-control" ) %></h3>
+		</div>
+		<div class="panel-body">
+			<%= render :partial => "application/add_device", :locals => {:room => room} unless Simulation.started? %>
+			<div id="devices">
+				<h4>Devices</h4>
+				<% room.device_rooms.each do |device_room| %>
+					<%= render :partial => "rooms/device", :locals => {:device_room => device_room } %>
+				<% end %>
+			</div>
+			<div class="people">
+				<h4>People</h4>
+				<% room.people.each do |person| %>
+					<%= render :partial => "rooms/person", :locals => {:person => person } %>
+				<% end %>
+			</div>
+			<div class="stuffs">
+				<h4>Stuff</h4>
+				<% room.stuffs.each do |stuff| %>
+					<%= render :partial => "stuffs/stuff", :locals => {:stuff => stuff } %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

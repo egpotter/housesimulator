@@ -1,0 +1,104 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.purr {
+  z-index: 2000;
+  position: fixed;
+  top: 0px;
+  right: 100px;
+  width: 80%;
+  padding: 20px;
+  background-color: #FCC;
+  border: solid 2px #666;
+  &:first-letter { text-transform: uppercase };
+}
+
+ul.navigation_forms{
+  float:right;
+}
+
+div.room {
+  padding: 0px;
+	margin-top: 10px;
+	/* background-color: #E5E5E5;  */
+	text-align: center;
+  border-style:solid;
+  border-width:5px;
+  border-color: #ffffff; 
+}
+
+div.notification {
+  border-style:solid;
+  border-width:1px;
+  border-color: #ff0000; 
+}
+
+div.room .panel-heading button{
+  opacity: 0.8;
+}
+
+div.container-fluid select{
+  width: 180px;
+}
+
+div.room input.btn{
+  float: right;
+  margin-right: 5px;
+}
+
+
+div.device_room, div.person_room, div.stuff{
+  min-height: 21px;
+  width: 100%;
+  text-align: left;
+}
+
+div.device_room h4{
+  margin-top:5px;
+  margin-bottom:0px;
+  color: #22f;
+}
+
+div.device_room button, div.person_room button {
+  float: right;
+}
+
+div.container-fluid {
+  padding-top: 10px;
+}
+
+
+form#new_room div.controls{
+  margin-left:60px;
+}
+
+div.container-fluid{
+  margin-top:45px;
+}
+
+div.navbar-collapse a.btn-primary {
+  margin-top: 8px;
+}
+
+div.organization{
+  height: 12px;
+  font-size: 12px;
+}
+
+div.organization .close{
+  font-size: 12px;
+}
+
+div#devices div.changed span.changed {
+  color: #287916;  
+}
+
+
+
+/* div#organizations {
+  padding-left: 5px;
+  position: fixed;
+  left: 0px;
+  width: 100px;
+}*/

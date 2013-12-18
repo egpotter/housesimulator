@@ -1,0 +1,14 @@
+<div id="notice">
+</div>
+<%= nested_form_for @device_room, url: update_device_room_path(@device_room) ,:remote => true, :html => { :class => 'form-horizontal', :method => "put" } do |f| %>
+	<div class='xs-col-12' id="edit_device">
+		<h1><%= @device_room.device.name %></h1>
+		<h4><%= @device_room.id	 %></h4>
+		<%= f.label 'room_id', "Room" %>
+		<%= f.select 'room_id', options_from_collection_for_select(Room.all, 'id', 'name', @device_room.room_id) %>
+		<%= f.fields_for :statuses do |status| %>
+			<div> <%= status.label(status.object.value, status.object.name) %><%= status.select(:value, options_for_select(status.object.get_values, status.object.value),  "data_id" => status.object.id)%></div>
+		<% end %>
+		<%= f.submit "Save", :class => 'btn btn-primary', :disabled => Simulation.started? %>
+	</div>
+<% end %>

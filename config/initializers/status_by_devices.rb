@@ -1,0 +1,37 @@
+
+STATUS_BY_DEVICES = {
+	"mobile_phone"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound", "playing_video"],
+	"radio_clock"=>["active", "on", "busy", "showing_text", "playing_sound"], 
+	"smart_wardrobe"=>["active", "on", "busy", "showing_text", "showing_image"], 
+	"smart_pillow"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound", "playing_video"], 
+	"smart_window"=>["active", "on", "busy", "showing_text", "showing_image"], 
+	"curtain"=>["active", "opening_level"],
+	"roof_light"=>["active", "on", "light_type"],
+	"lamp"=>["active", "on", "light_type"],
+	"mirror"=>["active", "on", "zoom_type", "busy", "showing_text", "showing_image"],
+	"sprinkler"=>["active", "on", "busy"],
+	"door"=>["active", "open", "locked"],
+	"computer_type_1"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound", "playing_video"],
+	"computer_type_2"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound", "playing_video"],
+	"agenda_type_1"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound"],
+	"agenda_type_2"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound"],
+	"window"=>["active", "opening_level", "locked"],
+	"luminaire"=>["active", "on", "light_type"],
+	"shower"=>["active", "on"],
+	"latrine"=>["active", "on", "busy"],
+	"tap"=>["active", "open"],
+	"microwave"=>["active", "on", "busy", "showing_text", "playing_sound"],
+	"smart_painting"=>["active", "on", "busy", "showing_text", "showing_image"],
+	"stove"=>["active", "on"],
+	"oven"=>["active", "on"],
+	"smart_refrigerator"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound"],
+	"exhauster"=>["active", "on"],
+	"wash_machine"=>["active", "on"],
+	"gas_controller"=>["active", "open"],
+	"eletronic_photo_album"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound"],
+	"watch"=>["active", "on", "busy", "showing_text", "playing_sound"],
+	"television_type_1"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound", "playing_video"],
+	"television_type_2"=>["active", "on", "busy", "showing_text", "showing_image", "playing_sound", "playing_video"]
+
+}
+

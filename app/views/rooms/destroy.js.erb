@@ -1,0 +1,4 @@
+$("div[data-id='room_<%= @room.id%>']").remove();
+$("select#room_id").html("<%= escape_javascript(options_from_collection_for_select(Room.all, 'id', 'name')) %>"); 
+$("select#person_room_id").html("<%= escape_javascript(options_from_collection_for_select(Room.all, 'id', 'name')) %>"); 
+$("select#stuff_room_id").html("<%= escape_javascript(options_from_collection_for_select(Room.all, 'id', 'name')) %>"); 

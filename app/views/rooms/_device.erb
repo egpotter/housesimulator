@@ -1,0 +1,18 @@
+<div class="device_room" data-device-room-id="<%= device_room.id %>">
+	<% if !Simulation.started? %>
+		<button class='close' data-url="<%= delete_device_room_path(device_room.room, device_room_id: device_room.id )%>" data-remote="true" data-method="delete" data-confirm="Are you sure?">&times;</button>
+		<%= link_to device_room.device.name, edit_device_room_path(device_room) %> 
+	<% else %>
+		<h4><%= device_room.device.name %></h4>
+		<% device_room.statuses.each do |status| %>
+			<% if status.updated_at > 30.seconds.ago %>
+			 	<span class='changed'>
+			 		<b><%= status.name %></b>(<%= print_status_value_and_links(status) %>) 
+				</span>
+			<% else %>
+				<b><%= status.name %></b>(<%= print_status_value_and_links(status) %>) 
+			<% end %>
+
+		<% end %>
+	<% end %>
+</div>

@@ -1,0 +1,4 @@
+<div data-id="organization_<%= organization.id %>" class="organization">
+	<%= best_in_place organization, :name, inner_class: "form-control"  %>
+	<button class='close' data-url="<%= organization_path(organization) %>" data-remote="true" data-method="delete" data-confirm="Are you sure?">&times;</button>
+</div>

@@ -1,0 +1,10 @@
+<div class='xs-col-12' id="edit_device">
+	<h1><%= @device.name %></h1>
+	<% OPERATIONS_BY_DEVICE[@device.name].each do |operation| %>
+		<div>
+			<strong><%= operation %></strong>
+			<br>Pre-Conditions: <%= print_pre_conditions(PRE_CONDITIONS[operation]) %>
+			<br>Results: <%= print_post_conditions(POST_CONDITIONS[operation]) %>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,22 @@
+<%= form_tag do -%>
+	<% count = 0 %>
+	<table>
+	<tr>
+	<% @devices.each do |device| %> 
+		<td><%= device.name %> <%= check_box_tag "device_ids[]", device.id,device.active %></td>
+		<% count = count + 1 %>
+		<% if count%4 ==0 %>
+			</tr><tr>
+		<% end  %>
+	<% end if @devices%>
+	</tr>
+	</table>
+	<br /> 
+	<% if @simulation && @simulation.active == true %>
+		<%= hidden_field_tag "simulation_id", @simulation.id%>
+		<%= submit_tag "Finish simulation", :class => 'btn btn-primary' %>
+	<% else %> 
+		<%= submit_tag "Start simulation", :class => 'btn btn-primary' %>
+	<% end %>
+<% end -%>
+

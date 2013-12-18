@@ -1,0 +1,8 @@
+<div class="navbar">
+	<%= form_for room, url: add_device_room_path(room), remote: true, html: {method: "post", :class => "form-inline"}  do |f|%>
+		<div class="form-group">
+			<%= select_tag 'device_id', options_from_collection_for_select(Device.all.order(:name), 'id', 'name'), class: "form-control" %>
+		</div>
+		<%= f.submit "Add", {:remote => true, :class => "btn btn-primary"}	 %>
+	<% end %>
+</div>

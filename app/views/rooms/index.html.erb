@@ -1,0 +1,134 @@
+<%- model_class = Room -%>
+
+<% if !Simulation.started? %>
+	<div class="navbar">
+		<div class="container">
+			<div class='tab-content'>
+				<div class='tab-pane active'>
+					<div class="jumbotron">
+						<h2>Choose what you want to add on the top right corner</h2>
+						<% if Room.all.empty? %>
+  							<p>You should start by adding a Room First</p>
+						<% end %>
+					</div>
+				</div>
+				<div class='tab-pane fade' id='rooms_tab' data-target='rooms_tab'>
+					<div class="col-md-6">
+						<%= form_for @room, :remote => true, :html => { :class => 'form-inline' } do |f| %>
+						  <div class="form-group">
+						    <%= f.label :name, :class => 'sr-only' %>
+						    	<%= f.text_field :name, :class => 'form-control', :placeholder => "Name" %>
+						    </div>
+					    	<%= f.submit "Add Room", :class => 'btn btn-primary' %>					  
+						<% end %>
+					</div>
+				</div>
+				<div class='tab-pane fade' id='stuff_tab'>
+					<div class="col-md-6">
+						<%= form_for Stuff.new,url: stuffs_path,:remote => true, :html => { :class => 'form-inline' } do |f| %>
+						  	<div class="form-group">
+						    	<%= f.label :name, :class => 'sr-only' %>
+						    	<%= f.text_field :name, :class => 'form-control', :placeholder => "Name" %>
+						    </div>
+						    <div class="form-group">
+						    	<%= f.select 'room_id', options_from_collection_for_select(Room.all, 'id', 'name'),{}, :class => "form-control" %>
+					    	</div>
+					    	<%= f.submit "Add Stuff	", :class => 'btn btn-primary' %>	
+						<% end %>
+					</div>
+				</div>
+				<div class='tab-pane fade' id='organization_tab'>
+					<div class="col-md-6">
+						<%= form_for Organization.new, url: organizations_path, :remote => true, :html => { :class => 'form-inline' } do |f| %>
+						  	<div class="form-group">
+						    	<%= f.label :name, :class => 'sr-only' %>
+						    	<%= f.text_field :name, :class => 'form-control', :placeholder => "Name" %>
+						  	</div>
+					    	<%= f.submit "Add Organization", :class => 'btn btn-primary' %>	
+						<% end %>
+					</div>
+					<div class="col-md-6">
+						<div id="organizations">
+							<% Organization.all.each do |organization| %>
+								<%= render :partial => 'organizations/organization', :locals => {organization: organization} %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class='tab-pane fade' id='person_tab'>
+					<%= nested_form_for Person.new, url: add_person_path ,:remote => true, :html => { :class => 'form-inline' } do |f| %>
+						<div class="col-md-8">
+						  	<div class="form-group">
+						  	 	<%= f.label :name, :class => 'sr-only' %>
+						    	<%= f.text_field :name, :class => 'form-control', :placeholder => "Name" %>
+					    	</div>
+					    	<div class="form-group">
+						    	<%= f.select 'room_id', options_from_collection_for_select(Room.all, 'id', 'name') + content_tag(:option,'not at home',:value=>"0"), {}, :class => "form-control"%>
+						    </div>
+						    <div class="form-group">
+						    	<%= f.select :kind, options_for_select(Person.kinds_array),{}, :class => "form-control" %>
+						    </div>
+						    <%= f.submit "Add Person", :class => 'btn btn-primary' %>	
+						</div>
+						<div class='col-md-4'>   	
+						    	<%= f.fields_for :disabilities do |disability| %>
+				  					<%= disability.select :name, options_for_select(Person.disabilities_array) %>
+					  					<%= disability.radio_button(:level, "1") %>
+										<%= disability.label(:level_1, "Low") %>
+										<%= disability.radio_button(:level, "2") %>
+										<%= disability.label(:level_2, "Medium") %>
+										<%= disability.radio_button(:level, "3") %>
+										<%= disability.label(:level_3, "High") %>
+					  					<%= disability.link_to_remove do %>
+				  						<button class="close" >×</button>
+				  					<% end %>
+								<% end %>
+									<p><%= f.link_to_add "Add a disability", :disabilities, :class => 'btn btn-primary' %></p>
+						</div>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div id="rooms">
+	<% if !Simulation.started? %>
+		<% @rooms.each do |room| %>
+		  <%= render :partial => 'room', :locals => {room: room} %>
+		<% end %>
+	<% else %>
+		<div class="col-md-6">
+			<% @rooms.each do |room| %>
+			  <%= render :partial => 'room', :locals => {room: room} %>
+			<% end %>
+		</div>
+		<div class="col-md-6">
+			<div id="organizations">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3>Organizations</h3>	
+					</div>
+					<div class="panel-body">
+						<% Organization.all.each do |organization| %>
+							<div><%= print_organization(organization) %></div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div id="logs">
+				<% @logs.each do |log| %>
+				<br>
+				<%= print_log_message(log) %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+<% if Simulation.started? %>
+	<script>
+		jQuery(document).ready(function(){
+			poll();
+		});
+	</script>
+<% end %>

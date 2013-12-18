@@ -1,0 +1,13 @@
+<% @device_rooms.each do |dr| %>
+	console.log('<%= dr.id%>')
+	changeDevice('<%= dr.id%>', "<%= escape_javascript(render :partial => 'rooms/device', :locals => {:device_room => dr }) %>");
+	$("div[data-id='room_<%= dr.room_id %>'] div.panel").removeClass("panel-info").addClass("panel-primary")
+	setTimeout(function(){
+		$("div[data-id='room_<%= dr.room_id %>'] div.panel").addClass("panel-info").removeClass("panel-primary")
+	}, 30000)
+<% end if Simulation.started? %>
+$("div#logs").html("&nbsp;")
+<% @logs.each do |log| %>
+	$("div#logs").append("<br><%= escape_javascript(print_log_message(log)) %>")
+<% end %>
+$("div#organizations").html("<%= escape_javascript(render :partial => 'organizations/organizations') %>")

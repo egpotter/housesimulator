@@ -1,0 +1,29 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="/">House Simulator</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Devices", devices_path %></li>
+            <li><%= link_to "Log", log_path %></li>          
+          </ul>
+          <%= manage_simulation_link %>
+          <% if !Simulation.started? && request.fullpath == '/'%>
+            <ul class="nav navbar-nav navigation_forms">
+              <li><a data-toggle='tab' href="#rooms_tab">Add Room</a></li>
+              <li><a data-toggle='tab' href="#stuff_tab">Add Stuff</a></li>
+              <li><a data-toggle='tab' href="#organization_tab">Add Organization</a></li>
+              <li><a data-toggle='tab' href="#person_tab">Add Person</a></li>
+            </ul>
+          <% end %>
+        </div><!--/.nav-collapse -->
+        
+      </div>
+    </div>

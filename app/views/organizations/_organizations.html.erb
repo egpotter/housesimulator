@@ -1,0 +1,10 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3>Organizations</h3>	
+	</div>
+	<div class="panel-body">
+		<% Organization.all.each do |organization| %>
+			<div><%= print_organization(organization) %></div>
+		<% end %>
+	</div>
+</div>

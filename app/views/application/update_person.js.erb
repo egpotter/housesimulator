@@ -1,0 +1,5 @@
+<% if @person.valid? %>
+	$("div#notice").html("Saved succesfully!");
+<% else %>
+	$("div#notice").html("<%= escape_javascript(render :partial => 'person_errors', :locals => {:person => @person }) %>");
+<% end %>

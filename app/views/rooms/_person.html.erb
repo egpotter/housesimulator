@@ -1,0 +1,18 @@
+<div class="person_room" data-person-id="<%= person.id %>">
+	<% if !Simulation.started? %>
+		<button class='close' data-url="<%= delete_person_path(:person_id => person )%>" data-remote="true" data-method="delete" data-confirm="Are you sure?">&times;</button>
+		<%= link_to "#{person.name} (#{person.kind})" , edit_person_path(person)%>
+	<% else %>
+		<h4><%= "#{person.name} (#{person.kind})" %></h4>
+		<% person.statuses.each do |status| %>
+			<% if status.updated_at > 30.seconds.ago %>
+			 	<span class='changed'>
+			 		<b><%= status.name %></b>(<%= print_status_value_and_links(status) %>) 
+				</span>
+			<% else %>
+				<b><%= status.name %></b>(<%= print_status_value_and_links(status) %>) 
+			<% end %>
+
+		<% end if person.kind == "Patient" %>
+	<% end %>
+</div>

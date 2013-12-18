@@ -1,0 +1,1 @@
+$("div[data-id='room_<%= @room.id%>'] div#devices").append("<%= escape_javascript(render :partial => 'device', :locals => { device_room: @device_room}) %>");

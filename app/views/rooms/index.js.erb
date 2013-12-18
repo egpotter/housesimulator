@@ -1,0 +1,8 @@
+<% if @room.valid? %>
+	$("#rooms").append("<%= escape_javascript(render(@room)) %>");
+	$("select#person_room_id").html("<%= escape_javascript(options_from_collection_for_select(Room.all, 'id', 'name')) %>"); 
+	$("select#stuff_room_id").html("<%= escape_javascript(options_from_collection_for_select(Room.all, 'id', 'name')) %>"); 
+	$("div#errors").html("");
+<% else %>
+	$("div#errors").html("<%= escape_javascript(render :partial => 'errors', :locals => {:room => @room }) %>");
+<% end %>

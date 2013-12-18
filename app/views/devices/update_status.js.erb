@@ -1,0 +1,5 @@
+<% if @status.person_id %>
+	$("div[data-person-id='<%= @status.person_id %>']").replaceWith("<%= escape_javascript(render :partial => 'rooms/person', :locals => {:person => @status.person }) %>")
+<% else %>
+	$("div[data-device-room-id='<%= @status.device_room_id %>']").replaceWith("<%= escape_javascript(render :partial => 'rooms/device', :locals => {:device_room => @status.device_room }) %>")
+<% end %>

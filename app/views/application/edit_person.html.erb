@@ -1,0 +1,27 @@
+<div id="notice">
+</div>
+<%= nested_form_for @person, url: update_person_path(@person) ,:remote => true, :html => { :class => 'form-horizontal', :method => "put" } do |f| %>
+  <div class="control-group">
+	 	<%= f.label :name, :class => 'sr-only' %>
+  	<%= f.text_field :name, :class => 'form-control', :placeholder => "Name" %>
+  	<%= f.select 'room_id', options_from_collection_for_select(Room.all, 'id', 'name', @person.room_id)+ content_tag(:option,'not at home',:value=>"0") %>
+  	<%= f.select :kind, options_for_select(Person.kinds_array, @person.kind) %>
+  	<%= f.fields_for :disabilities do |disability| %>
+			<%= disability.select :name, options_for_select(Person.disabilities_array, disability.object.name)  %>
+			<%= disability.radio_button(:level, "1") %>
+			<%= disability.label(:level_1, "Low") %>
+			<%= disability.radio_button(:level, "2") %>
+			<%= disability.label(:level_2, "Medium") %>
+			<%= disability.radio_button(:level, "3") %>
+			<%= disability.label(:level_3, "High") %>
+			<%= disability.link_to_remove do %>
+				<button class="close" >×</button>
+			<% end %>
+			<% end %>
+			<p><%= f.link_to_add "Add a disability", :disabilities %></p>
+			<%= f.fields_for :statuses do |status| %>
+			<div> <%= status.label(status.object.value, status.object.name) %><%= status.select(:value, options_for_select(status.object.get_values, status.object.value),  "data_id" => status.object.id)%></div>
+		<% end %>
+    	<%= f.submit "Save", :class => 'btn btn-primary', :disabled => Simulation.started? %>	
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<%- model_class = Device -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:wsdl) %></th>
+      <th><%= model_class.human_attribute_name(:functionalities) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= link_to device.id, device_path(device) %></td>
+        <td><%= device.name %></td>
+        <td>
+          <% STATUS_BY_DEVICES[device.name].each do  |status| %>
+            <%= "#{status} " %>
+          <% end %>
+        </td>
+        <td><%= link_to image_tag("file.png"), "/web_service/wsdl?device=#{device.name}" %></td>
+        <td><%= link_to image_tag("file.png"), conditions_device_path(device) %></td>
+        <td><%=l device.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
