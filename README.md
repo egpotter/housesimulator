@@ -1,8 +1,13 @@
 housesimulator
 ==============
-To run the app, we need to have ruby 2.0.0 with the gem bundler installed, this can be achieved with http://gorails.com/setup/ubuntu/13.10 or any other tutorial. We also need to have postgreSQL installed.
+To run the app, we need to have ruby 2.0.0 with the gem bundler installed, this can be achieved with http://gorails.com/setup/ubuntu/13.10 or any other tutorial. We also need to have postgreSQL installed, https://www.digitalocean.com/community/articles/how-to-install-and-use-postgresql-on-ubuntu-12-04 has a tutorial.
 
-After setting up the environment, we can now run the app
+
+We are going to nedd the gems bundler and rails for the app to work, so we can install then by running:
+gem install rails
+gem install bundler
+
+After setting up the environment, we can now run the app. 
 First, install all gems by running the command:
 bundle install
 
