@@ -4,24 +4,32 @@ To run the app, we need to have ruby 2.0.0 with the gem bundler installed, this 
 
 
 We are going to nedd the gems bundler and rails for the app to work, so we can install then by running:
+
 gem install rails
+
 gem install bundler
+
 
 After setting up the environment, we can now run the app. 
 First, install all gems by running the command:
 bundle install
 
 We need to add an user for the postgres user, and set its password to simulator, with the command, password will be asked:
+
 sudo -u postgres createuser -d -R -P simulator
 
 Then we need to create the database, by running the following command:
+
 rake db:create
 
 Then we need to create the tables and populate the database, with the commands:
+
 rake db:schema:load
+
 rake db:seed
 
 Now we can start the server by running:
+
 rails s
 
 
